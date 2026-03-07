@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metals & Non-Metals – 100 MCQ Exam Prep</title>
+<style>
+/* ─── CSS VARIABLES ─── */
+:root[data-theme="dark"] {
+  --bg:           #0f172a;
+  --bg2:          #1e293b;
+  --bg3:          #0f2744;
+  --border:       #334155;
+  --border-hover: #475569;
+  --text:         #e2e8f0;
+  --text-muted:   #94a3b8;
+  --text-dim:     #64748b;
+  --accent:       #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #60a5fa;
+  --accent-bg:    #1e3a5f;
+  --card-bg:      #1e293b;
+  --opt-bg:       #0f172a;
+  --opt-text:     #cbd5e1;
+  --header-grad:  linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  --correct-bg:   #064e3b;
+  --correct-text: #6ee7b7;
+  --correct-bd:   #10b981;
+  --wrong-bg:     #450a0a;
+  --wrong-text:   #fca5a5;
+  --wrong-bd:     #ef4444;
+  --exp-bg:       #0f2744;
+  --exp-text:     #93c5fd;
+  --shadow:       0 4px 24px rgba(0,0,0,0.4);
+  --toggle-icon:  "☀️";
+}
+:root[data-theme="light"] {
+  --bg:           #f1f5f9;
+  --bg2:          #ffffff;
+  --bg3:          #dbeafe;
+  --border:       #cbd5e1;
+  --border-hover: #94a3b8;
+  --text:         #0f172a;
+  --text-muted:   #475569;
+  --text-dim:     #94a3b8;
+  --accent:       #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-light: #1d4ed8;
+  --accent-bg:    #dbeafe;
+  --card-bg:      #ffffff;
+  --opt-bg:       #f8fafc;
+  --opt-text:     #334155;
+  --header-grad:  linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+  --correct-bg:   #d1fae5;
+  --correct-text: #065f46;
+  --correct-bd:   #10b981;
+  --wrong-bg:     #fee2e2;
+  --wrong-text:   #991b1b;
+  --wrong-bd:     #ef4444;
+  --exp-bg:       #eff6ff;
+  --exp-text:     #1e40af;
+  --shadow:       0 4px 24px rgba(0,0,0,0.08);
+  --toggle-icon:  "🌙";
+}
+
+/* ─── RESET & BASE ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ─── HEADER ─── */
+header {
+  background: var(--header-grad);
+  padding: clamp(20px, 5vw, 40px) clamp(16px, 5vw, 40px) clamp(16px, 4vw, 28px);
+  text-align: center;
+  border-bottom: 2px solid var(--accent);
+  position: relative;
+}
+header h1 {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: var(--accent-light);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+header p {
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: absolute;
+  top: 50%;
+  right: clamp(12px, 4vw, 24px);
+  transform: translateY(-50%);
+  background: var(--accent-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.theme-toggle:hover { border-color: var(--accent); }
+
+/* ─── STICKY CONTROLS ─── */
+.controls-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: background 0.3s;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 14px clamp(12px, 4vw, 24px);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ─── PROGRESS BAR (under controls) ─── */
+.progress-wrap {
+  height: 4px;
+  background: var(--border);
+}
+.progress-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), #10b981);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: clamp(0.78rem, 2.2vw, 0.88rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.btn-start  { background: var(--accent); color: #fff; }
+.btn-start:hover  { background: var(--accent-hover); transform: translateY(-1px); }
+.btn-start.active { background: #0d9488; }
+.btn-reveal { background: #059669; color: #fff; }
+.btn-reveal:hover { background: #047857; transform: translateY(-1px); }
+.btn-reset  { background: #dc2626; color: #fff; }
+.btn-reset:hover  { background: #b91c1c; transform: translateY(-1px); }
+
+/* Score pill */
+.score-pill {
+  padding: 8px 16px;
+  background: var(--accent-bg);
+  border: 1.5px solid var(--accent);
+  border-radius: 50px;
+  color: var(--accent-light);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2.2vw, 0.92rem);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.score-pill span { opacity: 0.7; font-weight: 400; }
+
+/* ─── MAIN LAYOUT ─── */
+.quiz-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 clamp(10px, 4vw, 24px) 60px;
+}
+
+/* ─── SECTION LABEL ─── */
+.section-label {
+  background: var(--accent-bg);
+  color: var(--accent-light);
+  font-weight: 700;
+  font-size: clamp(0.72rem, 2vw, 0.82rem);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  padding: 10px 16px;
+  margin: 28px 0 0;
+  border-radius: 8px 8px 0 0;
+  border-left: 4px solid var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── QUESTION CARD ─── */
+.question-card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 0 10px 10px 10px;
+  padding: clamp(14px, 3vw, 22px);
+  margin: 0 0 12px;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s, background 0.3s;
+}
+.question-card:hover { border-color: var(--border-hover); }
+
+/* Question header */
+.q-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.q-num {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.q-text {
+  font-size: clamp(0.88rem, 2.4vw, 0.97rem);
+  line-height: 1.6;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ─── OPTIONS GRID ─── */
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media (max-width: 560px) {
+  .options { grid-template-columns: 1fr; }
+}
+
+.option {
+  padding: clamp(9px, 2.5vw, 12px) clamp(10px, 3vw, 16px);
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--opt-bg);
+  cursor: pointer;
+  font-size: clamp(0.82rem, 2.2vw, 0.9rem);
+  color: var(--opt-text);
+  transition: all 0.15s;
+  text-align: left;
+  font-family: inherit;
+  line-height: 1.45;
+}
+.option:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--accent-bg);
+  transform: translateY(-1px);
+}
+.option.selected  { border-color: var(--accent); background: var(--accent-bg); color: var(--text); }
+.option.correct   { border-color: var(--correct-bd) !important; background: var(--correct-bg) !important; color: var(--correct-text) !important; font-weight: 600; }
+.option.wrong     { border-color: var(--wrong-bd)   !important; background: var(--wrong-bg)   !important; color: var(--wrong-text)   !important; }
+.option.reveal-correct { border-color: var(--correct-bd) !important; background: var(--correct-bg) !important; color: var(--correct-text) !important; font-weight: 600; }
+
+/* ─── EXPLANATION ─── */
+.explanation {
+  margin-top: 12px;
+  padding: clamp(10px, 2.5vw, 14px) clamp(12px, 3vw, 16px);
+  background: var(--exp-bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  font-size: clamp(0.8rem, 2.2vw, 0.87rem);
+  color: var(--exp-text);
+  line-height: 1.6;
+  display: none;
+  animation: fadeIn 0.25s ease;
+}
+.explanation.visible { display: block; }
+.explanation strong  { color: var(--accent-light); display: block; margin-bottom: 4px; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESULTS BANNER ─── */
+.results-banner {
+  display: none;
+  background: var(--accent-bg);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0 0;
+  text-align: center;
+}
+.results-banner.visible { display: block; animation: fadeIn 0.3s ease; }
+.results-banner h2 { color: var(--accent-light); font-size: 1.5rem; margin-bottom: 8px; }
+.results-banner p  { color: var(--text-muted); font-size: 0.95rem; }
+.grade {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent-light);
+  margin: 8px 0;
+}
+
+/* ─── BACK TO TOP ─── */
+.back-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.4);
+  transition: all 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-top.show { opacity: 1; pointer-events: all; }
+.back-top:hover { transform: translateY(-3px); background: var(--accent-hover); }
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚗️ Metals &amp; Non-Metals</h1>
+  <p>100 MCQs &nbsp;·&nbsp; Class 10 NCERT Ch. 3 &nbsp;·&nbsp; Complete Exam Prep</p>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Light</button>
+</header>
+
+<div class="controls-wrap">
+  <div class="controls">
+    <button class="btn btn-start"  id="startBtn"  onclick="startQuiz()">▶ Start Quiz</button>
+    <button class="btn btn-reveal" id="revealBtn" onclick="revealAll()">👁 Show Answers</button>
+    <button class="btn btn-reset"  id="resetBtn"  onclick="resetQuiz()">↺ Reset</button>
+    <div class="score-pill" id="scoreDisplay">🎯 Score: <span id="scoreNum">0</span> / <span id="totalNum">0</span></div>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+</div>
+
+<div class="quiz-container" id="quizContainer">
+  <div id="resultsBanner" class="results-banner"></div>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>Chapter 3 – Metals and Non-Metals &nbsp;|&nbsp; NCERT Class 10 Science</footer>
+
+<script>
+const questions = [
+  // ─── PHYSICAL PROPERTIES ───
+  { section: "Physical Properties of Metals & Non-Metals", q: "Which property of metals allows them to be beaten into thin sheets?", opts: ["Ductility","Malleability","Sonority","Conductivity"], ans: 1, exp: "Malleability is the property of metals to be beaten into thin sheets. Gold and silver are the most malleable metals." },
+  { section: null, q: "Which property of metals allows them to be drawn into thin wires?", opts: ["Malleability","Sonority","Ductility","Lustre"], ans: 2, exp: "Ductility is the ability to be drawn into wires. Gold is the most ductile metal – 2 km of wire can be drawn from 1 gram of gold." },
+  { section: null, q: "What is the shining surface of metals in their pure state called?", opts: ["Ductility","Metallic lustre","Malleability","Sonority"], ans: 1, exp: "Metals in their pure state have a shining surface called metallic lustre." },
+  { section: null, q: "Which of the following metals is a liquid at room temperature?", opts: ["Gallium","Sodium","Mercury","Caesium"], ans: 2, exp: "Mercury is the only metal that exists as a liquid at room temperature. All other metals are solids at room temperature." },
+  { section: null, q: "Which metal is the best conductor of heat?", opts: ["Copper","Aluminium","Silver","Gold"], ans: 2, exp: "Silver is the best conductor of heat, followed closely by copper. Lead and mercury are comparatively poor conductors." },
+  { section: null, q: "Which of the following is NOT a property of metals?", opts: ["Malleability","Ductility","Brittleness","Sonority"], ans: 2, exp: "Brittleness is a property of non-metals (like sulphur, phosphorus). Metals are generally malleable and ductile, not brittle." },
+  { section: null, q: "Metals that produce a sound on striking a hard surface are said to be:", opts: ["Lustrous","Malleable","Ductile","Sonorous"], ans: 3, exp: "Sonority is the property of metals that makes them produce a ringing sound when struck. This is why school bells are made of metals." },
+  { section: null, q: "Why are school bells made of metals?", opts: ["Metals are lustrous","Metals are sonorous","Metals are ductile","Metals are malleable"], ans: 1, exp: "Metals are sonorous – they produce a ringing sound when struck against a hard surface." },
+  { section: null, q: "Which of the following alkali metals can be cut with a knife?", opts: ["Copper","Sodium","Iron","Zinc"], ans: 1, exp: "Alkali metals like lithium, sodium, and potassium are so soft they can be cut with a knife. They also have low densities and melting points." },
+  { section: null, q: "Gallium and caesium are exceptions among metals because:", opts: ["They are non-metals","They have very low melting points","They are not lustrous","They are not ductile"], ans: 1, exp: "Gallium and caesium have very low melting points – they would melt if kept on your palm. Most metals have high melting points." },
+  { section: null, q: "Which of the following non-metals is lustrous?", opts: ["Sulphur","Carbon","Iodine","Phosphorus"], ans: 2, exp: "Iodine is a non-metal but it is lustrous (shiny). This is an exception to the general property that non-metals are not lustrous." },
+  { section: null, q: "Graphite, an allotrope of carbon, is unique among non-metals because:", opts: ["It is malleable","It conducts electricity","It is sonorous","It is ductile"], ans: 1, exp: "Graphite is the only non-metal that conducts electricity. It is used in electrodes and as a lubricant." },
+  { section: null, q: "Diamond is the hardest natural substance. It is:", opts: ["A metal","An allotrope of carbon","An alloy","An ore"], ans: 1, exp: "Diamond is an allotrope of carbon (a non-metal). It is the hardest natural substance known and has a very high melting and boiling point." },
+  { section: null, q: "Electric wires are coated with PVC or rubber because:", opts: ["These are good conductors","Metals react with PVC","These are insulators (non-conductors)","These are sonorous"], ans: 2, exp: "PVC and rubber are non-metals and therefore poor conductors (insulators) of electricity. They prevent electric shocks." },
+  { section: null, q: "The non-metal that exists as a liquid at room temperature is:", opts: ["Iodine","Sulphur","Bromine","Phosphorus"], ans: 2, exp: "Bromine is the only non-metal that is a liquid at room temperature. Other non-metals are either solids or gases." },
+  // ─── REACTIONS WITH OXYGEN ───
+  { section: "Chemical Properties – Reactions with Oxygen", q: "When metals react with oxygen, they generally form:", opts: ["Acidic oxides","Basic oxides","Neutral oxides","Salt and water"], ans: 1, exp: "Most metals react with oxygen to form basic metal oxides. E.g., 2Cu + O₂ → 2CuO (basic). However, Al₂O₃ and ZnO are amphoteric exceptions." },
+  { section: null, q: "Metal oxides that show both acidic and basic behaviour are called:", opts: ["Neutral oxides","Amphoteric oxides","Ionic oxides","Peroxides"], ans: 1, exp: "Amphoteric oxides react with both acids and bases. Examples: aluminium oxide (Al₂O₃) and zinc oxide (ZnO)." },
+  { section: null, q: "Which of the following is an amphoteric oxide?", opts: ["Na₂O","CaO","Al₂O₃","Fe₂O₃"], ans: 2, exp: "Al₂O₃ (aluminium oxide) is amphoteric – it reacts with both acids (HCl) and bases (NaOH) to produce salts and water." },
+  { section: null, q: "Sodium and potassium are stored in kerosene oil because:", opts: ["They melt easily","They react vigorously with air and water","They are liquid metals","They are very ductile"], ans: 1, exp: "Na and K react so vigorously with air/water that they can catch fire. Kerosene prevents contact with air and moisture." },
+  { section: null, q: "What is the product when sodium oxide dissolves in water?", opts: ["Na₂O₂","NaOH (alkali)","NaCl","Na₂CO₃"], ans: 1, exp: "Na₂O + H₂O → 2NaOH. Sodium oxide dissolves in water to form sodium hydroxide, a strong alkali." },
+  { section: null, q: "When magnesium burns in air, it produces:", opts: ["A blue flame","A red flame","A dazzling white flame","A yellow flame"], ans: 2, exp: "Magnesium burns in air with a characteristic dazzling white flame, forming magnesium oxide (MgO)." },
+  { section: null, q: "Silver and gold do not react with oxygen because:", opts: ["They are liquid","They are at the bottom of the activity series (least reactive)","They are non-metals","They are amphoteric"], ans: 1, exp: "Silver and gold are at the bottom of the reactivity series. They are the least reactive metals and do not react with oxygen even at high temperatures." },
+  { section: null, q: "Anodising is used to thicken the protective oxide layer on which metal?", opts: ["Iron","Copper","Aluminium","Zinc"], ans: 2, exp: "Anodising involves electrolysis of a clean aluminium article (as anode) in dilute H₂SO₄. Oxygen evolved at the anode reacts with Al to form a thicker protective Al₂O₃ layer." },
+  { section: null, q: "In anodising, the aluminium article is made the:", opts: ["Cathode","Electrolyte","Anode","Salt bridge"], ans: 2, exp: "During anodising, the aluminium article is made the anode. The oxygen gas produced at the anode reacts with aluminium to form a thick oxide layer." },
+  { section: null, q: "Al₂O₃ + 2NaOH → 2NaAlO₂ + H₂O. In this reaction, Al₂O₃ acts as:", opts: ["A base","An acid","A salt","An indicator"], ans: 1, exp: "Al₂O₃ reacts with NaOH (a base), showing acidic behaviour. Al₂O₃ is amphoteric – it reacts with both acids and bases." },
+  { section: null, q: "Non-metals, when burnt in oxygen, generally form:", opts: ["Basic oxides","Amphoteric oxides","Acidic oxides","Neutral oxides"], ans: 2, exp: "Most non-metals produce acidic oxides when dissolved in water. E.g., SO₂ + H₂O → H₂SO₃ (sulphurous acid)." },
+  // ─── REACTIONS WITH WATER ───
+  { section: "Reactions with Water", q: "Which metals react violently with cold water, generating heat and fire?", opts: ["Iron and zinc","Copper and silver","Sodium and potassium","Aluminium and lead"], ans: 2, exp: "Sodium and potassium react so violently with cold water that the evolved hydrogen gas immediately catches fire. 2Na + 2H₂O → 2NaOH + H₂↑ + heat." },
+  { section: null, q: "Why does calcium float on water during its reaction?", opts: ["It is less dense than water","H₂ bubbles stick to its surface","It dissolves rapidly","It forms a gas other than hydrogen"], ans: 1, exp: "Calcium floats because hydrogen gas bubbles formed during the reaction stick to the metal surface, reducing its effective density." },
+  { section: null, q: "What is formed when calcium reacts with water?", opts: ["CaO + H₂","Ca(OH)₂ + H₂","CaCl₂ + H₂","CaCO₃ + H₂"], ans: 1, exp: "Ca(s) + 2H₂O(l) → Ca(OH)₂(aq) + H₂(g). Calcium hydroxide is slightly soluble and the reaction is less violent than Na/K." },
+  { section: null, q: "Magnesium reacts with which form of water?", opts: ["Cold water only","Hot water – forming Mg(OH)₂ + H₂","Neither hot nor cold water","Steam only"], ans: 1, exp: "Magnesium does NOT react with cold water. It reacts slowly with hot water to form magnesium hydroxide and hydrogen gas." },
+  { section: null, q: "Metals like aluminium, iron and zinc react with:", opts: ["Cold water","Hot water","Steam","Both cold and hot water"], ans: 2, exp: "Al, Fe and Zn do not react with cold or hot water but react with steam. E.g., 3Fe + 4H₂O → Fe₃O₄ + 4H₂." },
+  { section: null, q: "Which metals do NOT react with water at all?", opts: ["Al, Fe, Zn","Na, K, Ca","Pb, Cu, Ag, Au","Mg, Al, Zn"], ans: 2, exp: "Lead, copper, silver, and gold do not react with water (cold, hot, or steam) – they are low in the reactivity series." },
+  { section: null, q: "The reaction of iron with steam produces:", opts: ["Fe₂O₃ + H₂","Fe₃O₄ + H₂","FeO + H₂","Fe(OH)₂ + H₂"], ans: 1, exp: "3Fe(s) + 4H₂O(g) → Fe₃O₄(s) + 4H₂(g). Iron forms iron(II,III) oxide (magnetite) with steam." },
+  { section: null, q: "The general equation for metal reacting with water gives:", opts: ["Metal oxide + Oxygen","Metal oxide + Hydrogen","Metal hydroxide + Oxygen","Salt + Water"], ans: 1, exp: "Metal + Water → Metal oxide + Hydrogen. If the metal oxide is soluble, it further reacts: Metal oxide + Water → Metal hydroxide." },
+  // ─── REACTIONS WITH ACIDS ───
+  { section: "Reactions with Acids", q: "When metals react with dilute acids, the products are:", opts: ["Metal oxide + water","Salt + hydrogen gas","Metal hydroxide + water","Metal carbonate + CO₂"], ans: 1, exp: "Metal + Dilute acid → Salt + Hydrogen gas. E.g., Zn + H₂SO₄ → ZnSO₄ + H₂↑." },
+  { section: null, q: "Why is hydrogen gas NOT evolved when metals react with dilute HNO₃?", opts: ["HNO₃ is a weak acid","HNO₃ is a strong oxidising agent that oxidises H₂ to water","Metals do not react with HNO₃","HNO₃ reacts only with non-metals"], ans: 1, exp: "HNO₃ is a strong oxidising agent. It oxidises the H₂ produced to water and itself gets reduced to nitrogen oxides (N₂O, NO, NO₂)." },
+  { section: null, q: "Which metals react with very dilute HNO₃ to evolve H₂ gas?", opts: ["Iron and zinc","Copper and silver","Magnesium and manganese","Gold and platinum"], ans: 2, exp: "Magnesium (Mg) and manganese (Mn) are exceptions – they react with very dilute HNO₃ to produce H₂ gas." },
+  { section: null, q: "In Activity 3.11 (metals in HCl), which metal showed the fastest bubble formation?", opts: ["Zinc","Iron","Aluminium","Magnesium"], ans: 3, exp: "Magnesium showed the fastest rate of bubble formation AND was most exothermic. Reactivity: Mg > Al > Zn > Fe > Cu (no reaction)." },
+  { section: null, q: "Aqua regia is a mixture of concentrated HCl and HNO₃ in the ratio:", opts: ["1:3","3:1","1:1","2:1"], ans: 1, exp: "Aqua regia (Latin: 'royal water') is concentrated HCl : concentrated HNO₃ in the ratio 3:1. It can dissolve gold and platinum." },
+  { section: null, q: "Aqua regia can dissolve:", opts: ["Iron","Copper","Gold and platinum","Sodium"], ans: 2, exp: "Aqua regia is one of the few reagents capable of dissolving gold and platinum. Neither HCl nor HNO₃ can do so alone." },
+  { section: null, q: "Copper does NOT react with dilute HCl because:", opts: ["It is liquid","It is above hydrogen in the activity series","It is below hydrogen in the activity series","It forms an oxide layer"], ans: 2, exp: "Copper is below hydrogen in the activity/reactivity series. Only metals above hydrogen can displace it from dilute acids." },
+  // ─── REACTIVITY SERIES ───
+  { section: "Reactivity Series & Displacement Reactions", q: "In the reactivity series, which metal is the most reactive?", opts: ["Sodium","Calcium","Potassium","Magnesium"], ans: 2, exp: "Potassium (K) is the most reactive metal, followed by Na, Ca, Mg, Al, Zn, Fe, Pb, Cu, Hg, Ag, Au." },
+  { section: null, q: "In the reactivity series, which metal is the least reactive?", opts: ["Silver","Copper","Mercury","Gold"], ans: 3, exp: "Gold (Au) is the least reactive metal. This is why gold is found in its free (native) state in nature." },
+  { section: null, q: "If metal A displaces metal B from a salt solution, then:", opts: ["A is less reactive than B","A and B have equal reactivity","A is more reactive than B","B is more reactive than A"], ans: 2, exp: "A more reactive metal displaces a less reactive metal from its salt solution. Metal A + Salt solution of B → Salt of A + Metal B." },
+  { section: null, q: "When an iron nail is placed in copper sulphate solution, what happens?", opts: ["No reaction","Iron displaces copper; blue colour fades","Copper displaces iron","Iron dissolves completely"], ans: 1, exp: "Iron is more reactive than copper. Fe + CuSO₄ → FeSO₄ + Cu. The blue colour of CuSO₄ fades and copper deposits on the iron nail." },
+  { section: null, q: "When a copper wire is placed in iron sulphate solution:", opts: ["Copper displaces iron","No reaction occurs","Iron displaces copper","Copper dissolves"], ans: 1, exp: "No reaction occurs because copper is less reactive than iron. A less reactive metal cannot displace a more reactive one from its salt solution." },
+  { section: null, q: "The thermite reaction involves which two reactants?", opts: ["CuO + Zn","Fe₂O₃ + Al","ZnO + Mg","Al₂O₃ + Fe"], ans: 1, exp: "Fe₂O₃(s) + 2Al(s) → 2Fe(l) + Al₂O₃(s) + Heat. This highly exothermic thermite reaction is used to join railway tracks." },
+  { section: null, q: "The thermite reaction is used for:", opts: ["Extracting aluminium","Joining railway tracks or cracked machine parts","Refining copper","Making stainless steel"], ans: 1, exp: "The thermite reaction produces molten iron at very high temperature, used to weld/join railway tracks or cracked machine parts." },
+  { section: null, q: "Highly reactive metals (Na, Ca, Al) are used as reducing agents because:", opts: ["They dissolve in water","They can displace metals of lower reactivity from their compounds","They are cheap","They are amphoteric"], ans: 1, exp: "Highly reactive metals can displace metals of lower reactivity from their oxides/compounds due to their strong affinity for oxygen." },
+  { section: null, q: "Which of the following will NOT undergo a displacement reaction?", opts: ["Zn + FeSO₄ solution","Cu + AgNO₃ solution","Ag + CuSO₄ solution","Fe + CuSO₄ solution"], ans: 2, exp: "Silver (Ag) is less reactive than copper (Cu). A less reactive metal cannot displace a more reactive metal from its salt solution." },
+  { section: null, q: "Order of decreasing reactivity with dilute HCl:", opts: ["Fe > Zn > Al > Mg","Mg > Al > Zn > Fe","Al > Mg > Fe > Zn","Zn > Fe > Mg > Al"], ans: 1, exp: "The reactivity with dilute HCl decreases in the order: Mg > Al > Zn > Fe > Cu (Cu doesn't react at all)." },
+  { section: null, q: "AgNO₃ + Cu → This reaction is an example of:", opts: ["Combination reaction","Displacement reaction","Decomposition reaction","Double displacement"], ans: 1, exp: "Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag. Copper is more reactive than silver and displaces it – a displacement reaction." },
+  // ─── IONIC BONDING ───
+  { section: "Ionic Bonding & Ionic Compounds", q: "Compounds formed by transfer of electrons from metal to non-metal are called:", opts: ["Covalent compounds","Alloys","Ionic (electrovalent) compounds","Molecular compounds"], ans: 2, exp: "When electrons transfer from a metal to a non-metal, ionic/electrovalent compounds are formed. E.g., NaCl is formed by transfer of e⁻ from Na to Cl." },
+  { section: null, q: "In NaCl, the sodium cation has the electron configuration:", opts: ["2,8,1","2,8","2,8,8","2,7"], ans: 1, exp: "Na (2,8,1) loses 1 electron to become Na⁺ (2,8), acquiring the stable configuration of neon." },
+  { section: null, q: "In NaCl, the chloride anion has the electron configuration:", opts: ["2,8,7","2,8,8","2,7","2,8,1"], ans: 1, exp: "Cl (2,8,7) gains 1 electron to become Cl⁻ (2,8,8), acquiring the stable configuration of argon." },
+  { section: null, q: "Sodium chloride does NOT exist as molecules but as:", opts: ["Covalent bonds","Aggregates of oppositely charged ions","Metallic bonds","Neutral atoms"], ans: 1, exp: "NaCl exists as a 3D lattice of oppositely charged Na⁺ and Cl⁻ ions held by strong electrostatic forces – not as individual molecules." },
+  { section: null, q: "How many electrons does magnesium lose to form Mg²⁺?", opts: ["1","3","2","4"], ans: 2, exp: "Mg (2,8,2) loses 2 electrons to form Mg²⁺ (2,8), acquiring the stable configuration of neon." },
+  { section: null, q: "Ionic compounds have high melting and boiling points because:", opts: ["They are covalent","Strong electrostatic inter-ionic forces require considerable energy to break","They are gases","They are alloys"], ans: 1, exp: "Ionic compounds have strong electrostatic forces between oppositely charged ions. Large energy is needed to break these forces, hence high melting/boiling points." },
+  { section: null, q: "Ionic compounds are generally soluble in:", opts: ["Kerosene","Petrol","Water","Benzene"], ans: 2, exp: "Electrovalent compounds are generally soluble in water (polar solvent) and insoluble in non-polar solvents like kerosene and petrol." },
+  { section: null, q: "Ionic compounds in the SOLID state do NOT conduct electricity because:", opts: ["They have no ions","Ions cannot move in the rigid solid structure","They dissolve in water","They are molecular"], ans: 1, exp: "In solid state, ions are held in fixed positions in the crystal lattice and cannot move freely. Electrical conduction requires mobile charge carriers." },
+  { section: null, q: "Ionic compounds conduct electricity in:", opts: ["Solid state only","Gaseous state only","Molten state or aqueous solution","No state"], ans: 2, exp: "Ionic compounds conduct electricity in molten state or in aqueous solution because ions become free to move, carrying electric charge." },
+  { section: null, q: "Why are ionic compounds brittle?", opts: ["Due to weak forces","Layers shift under pressure causing like charges to repel, fracturing the crystal","Due to covalent bonds","Due to metallic bonds"], ans: 1, exp: "When pressure is applied, ion layers shift, bringing like-charged ions adjacent. The resulting repulsion causes the crystal to break/shatter." },
+  { section: null, q: "The cation present in MgCl₂ is:", opts: ["Cl⁻","Mg²⁺","Mg⁺","Cl²⁻"], ans: 1, exp: "In MgCl₂, magnesium forms Mg²⁺ and chlorine forms Cl⁻. Two Cl⁻ ions balance one Mg²⁺ ion." },
+  // ─── OCCURRENCE & EXTRACTION ───
+  { section: "Occurrence & Extraction of Metals", q: "Elements or compounds occurring naturally in the earth's crust are called:", opts: ["Ores","Alloys","Minerals","Gangue"], ans: 2, exp: "Minerals are elements or compounds occurring naturally in the earth's crust. When a mineral has a high enough percentage of a metal to be profitably extracted, it is called an ore." },
+  { section: null, q: "A mineral from which a metal can be profitably extracted is called:", opts: ["Gangue","Mineral","Alloy","Ore"], ans: 3, exp: "An ore is a mineral containing a sufficiently high percentage of a metal for economically profitable extraction." },
+  { section: null, q: "The impurities (soil, sand) present in ores are called:", opts: ["Alloys","Slag","Gangue","Flux"], ans: 2, exp: "Gangue refers to the earthly and other impurities (soil, sand, rocks) found mixed with the ore. These must be removed before metal extraction." },
+  { section: null, q: "Gold, silver, and platinum are found in the free state because:", opts: ["They are at the top of the activity series","They are at the bottom – least reactive metals","They are non-metals","They are alloys"], ans: 1, exp: "Gold, silver, and platinum are very unreactive (bottom of activity series), so they occur in nature in their free/native state." },
+  { section: null, q: "Metals at the TOP of the activity series (K, Na, Ca, Mg, Al) are:", opts: ["Found in native state","So reactive they are never found as free elements","Found only as oxides","Found only as sulphides"], ans: 1, exp: "Highly reactive metals (K, Na, Ca, Mg, Al) combine so readily with other elements that they are NEVER found as free elements in nature." },
+  { section: null, q: "Cinnabar (HgS) is an ore of which metal?", opts: ["Iron","Copper","Mercury","Zinc"], ans: 2, exp: "Cinnabar (HgS) is the principal ore of mercury. When heated in air, it forms HgO, which is further reduced to Hg on further heating." },
+  { section: null, q: "The process of converting sulphide ores to oxides by heating in excess air is called:", opts: ["Calcination","Smelting","Roasting","Electrolysis"], ans: 2, exp: "Roasting is heating sulphide ores strongly in excess air. E.g., 2ZnS + 3O₂ → 2ZnO + 2SO₂." },
+  { section: null, q: "The process of converting carbonate ores to oxides by heating in limited air is called:", opts: ["Roasting","Refining","Smelting","Calcination"], ans: 3, exp: "Calcination is heating carbonate ores in limited air. E.g., ZnCO₃ → ZnO + CO₂." },
+  { section: null, q: "Zinc oxide can be reduced to zinc using:", opts: ["HCl","Carbon (coke)","Sulphuric acid","Electrolysis"], ans: 1, exp: "ZnO(s) + C(s) → Zn(s) + CO(g). Carbon (coke) reduces mid-activity-series metal oxides to their metals." },
+  { section: null, q: "Metals like Na, Mg, Ca are extracted by:", opts: ["Carbon reduction","Displacement by Al","Electrolytic reduction of their molten chlorides","Roasting"], ans: 2, exp: "Highly reactive metals cannot be reduced by carbon. They are obtained by electrolysis of their molten chlorides." },
+  { section: null, q: "In the electrolytic extraction of sodium, metals deposit at the:", opts: ["Anode","Electrolyte","Cathode","Salt bridge"], ans: 2, exp: "At cathode: Na⁺ + e⁻ → Na. Metal cations are deposited at the cathode (negative electrode). Chlorine is liberated at the anode." },
+  { section: null, q: "During electrolytic extraction, what is liberated at the anode?", opts: ["Sodium metal","Hydrogen gas","Chlorine gas","Oxygen gas"], ans: 2, exp: "At anode: 2Cl⁻ → Cl₂ + 2e⁻. Chlorine gas is liberated at the anode during electrolysis of molten sodium/calcium/magnesium chlorides." },
+  { section: null, q: "Why can't carbon reduce oxides of Na, Mg, Ca, Al?", opts: ["Carbon is too expensive","These metals have more affinity for oxygen than carbon","These metals are liquids","Carbon reacts with these metals"], ans: 1, exp: "Na, Mg, Ca, Al have a stronger affinity for oxygen than carbon. Carbon cannot remove oxygen from their oxides – electrolysis is needed instead." },
+  { section: null, q: "Fe₂O₃ + 2Al → 2Fe + Al₂O₃ + Heat. This is a:", opts: ["Calcination","Roasting","Displacement reaction (thermite reaction)","Electrolytic reduction"], ans: 2, exp: "Aluminium (more reactive) displaces iron from its oxide in this highly exothermic displacement reaction known as the thermite reaction." },
+  { section: null, q: "Ores of many metals are oxides because:", opts: ["Oxygen is very reactive and abundant on earth","Metals prefer to form oxides","Oxides are easier to mine","Oxides are more colourful"], ans: 0, exp: "Oxygen is one of the most abundant and reactive elements on Earth. It readily combines with metals to form stable metal oxides, making oxide ores very common." },
+  // ─── ELECTROLYTIC REFINING ───
+  { section: "Electrolytic Refining", q: "In electrolytic refining, the impure metal is made the:", opts: ["Cathode","Electrolyte","Anode","Reference electrode"], ans: 2, exp: "Impure metal is the anode; pure metal is the cathode; and the metal salt solution is the electrolyte." },
+  { section: null, q: "In electrolytic refining, pure metal deposits on the:", opts: ["Anode","Electrolyte","Cathode","Tank walls"], ans: 2, exp: "Pure metal ions from the electrolyte deposit on the cathode (thin strip of pure metal), building up a layer of refined metal." },
+  { section: null, q: "Insoluble impurities that settle at the bottom during electrolytic refining are called:", opts: ["Gangue","Slag","Anode mud","Flux"], ans: 2, exp: "Insoluble impurities from the anode settle at the bottom of the tank and are known as anode mud. Soluble impurities enter the solution." },
+  { section: null, q: "In electrolytic refining of copper, the electrolyte is:", opts: ["Dilute HCl","Dilute HNO₃","Acidified copper sulphate solution","NaCl solution"], ans: 2, exp: "Acidified copper sulphate (CuSO₄) solution is used as the electrolyte for electrolytic refining of copper." },
+  { section: null, q: "Which metals are refined electrolytically?", opts: ["Only gold","Only iron","Copper, zinc, tin, nickel, silver, gold","Only aluminium"], ans: 2, exp: "Many metals including copper, zinc, tin, nickel, silver, and gold are refined electrolytically to achieve high purity." },
+  // ─── CORROSION & ALLOYS ───
+  { section: "Corrosion & Alloys", q: "The slow destruction of metals by chemical reaction with environment is called:", opts: ["Combustion","Corrosion","Calcination","Roasting"], ans: 1, exp: "Corrosion is the gradual destruction of metals by chemical reactions with air, moisture, or chemicals. Rusting of iron is the most common example." },
+  { section: null, q: "Rust is chemically:", opts: ["Iron oxide (FeO)","Hydrated iron(III) oxide (Fe₂O₃·xH₂O)","Iron carbonate","Iron sulphide"], ans: 1, exp: "Rust is hydrated iron(III) oxide (Fe₂O₃·xH₂O). It forms as a brown, flaky coating when iron is exposed to moist air." },
+  { section: null, q: "For iron to rust, which TWO conditions are necessary?", opts: ["Air (oxygen) and water","Light and water","Heat and acid","CO₂ and light"], ans: 0, exp: "Iron rusts only in the presence of BOTH oxygen (air) and water. In dry air or oxygen-free water alone, rusting does NOT occur." },
+  { section: null, q: "Silver becomes black when exposed to air because:", opts: ["It forms silver oxide","It reacts with sulphur to form silver sulphide","It forms silver carbonate","It reacts with nitrogen"], ans: 1, exp: "Silver reacts with sulphur compounds in the air to form silver sulphide (Ag₂S), a black coating on the surface." },
+  { section: null, q: "Copper exposed to moist CO₂ in air forms a green coat of:", opts: ["Copper sulphide","Copper chloride","Basic copper carbonate","Copper oxide"], ans: 2, exp: "Copper reacts with moist CO₂ to form basic copper carbonate [CuCO₃·Cu(OH)₂] – the green patina seen on old copper objects." },
+  { section: null, q: "Galvanisation is the process of coating iron/steel with:", opts: ["Tin","Zinc","Copper","Chromium"], ans: 1, exp: "Galvanisation involves coating iron or steel with a thin layer of zinc to protect it from rusting." },
+  { section: null, q: "Why does galvanisation protect iron even when the zinc coating is broken?", opts: ["Zinc is harder than iron","Zinc reacts preferentially (sacrificial protection) since it is more reactive","Zinc fills the cracks","Zinc increases iron's density"], ans: 1, exp: "Zinc is more reactive than iron. When the coating is broken, zinc reacts preferentially with the environment (sacrificial anode), protecting iron." },
+  { section: null, q: "An alloy is a:", opts: ["Pure metal","Compound of metal and non-metal","Homogeneous mixture of two or more metals, or a metal and non-metal","Heterogeneous mixture of metals"], ans: 2, exp: "An alloy is a homogeneous mixture of two or more metals, or a metal with a non-metal. E.g., brass = Cu + Zn." },
+  { section: null, q: "Brass is an alloy of:", opts: ["Cu + Sn","Cu + Zn","Fe + Cr + Ni","Fe + C"], ans: 1, exp: "Brass = Copper (Cu) + Zinc (Zn). Used in musical instruments, valves, and fittings." },
+  { section: null, q: "Bronze is an alloy of:", opts: ["Cu + Zn","Fe + Ni + Cr","Cu + Sn","Pb + Sn"], ans: 2, exp: "Bronze = Copper (Cu) + Tin (Sn). Historically used for weapons, tools, and sculptures." },
+  { section: null, q: "Solder (used for welding electrical wires) is an alloy of:", opts: ["Cu + Zn","Cu + Sn","Pb + Sn","Fe + Ni"], ans: 2, exp: "Solder = Lead (Pb) + Tin (Sn). It has a LOW melting point, making it ideal for joining electrical wires and circuit components." },
+  { section: null, q: "Why is electrical conductivity of alloys LESS than pure metals?", opts: ["Alloys are non-metals","Irregular atomic structure scatters electrons, reducing conductivity","Alloys are brittle","Alloys are heavier"], ans: 1, exp: "In alloys, atoms of different sizes create lattice distortions that scatter electrons, reducing their mean free path and hence electrical conductivity." },
+  { section: null, q: "An amalgam is an alloy where one metal is:", opts: ["Gold","Iron","Mercury","Aluminium"], ans: 2, exp: "An amalgam is an alloy in which one of the metals is mercury. Used in dentistry and historically in precious metal extraction." },
+  { section: null, q: "Stainless steel is an alloy of:", opts: ["Fe + C only","Fe + Ni + Cr","Cu + Zn + Ni","Al + Mg + Ni"], ans: 1, exp: "Stainless steel = Iron + Nickel + Chromium. Hard, resistant to rusting due to the passive chromium oxide film that forms on the surface." },
+  { section: null, q: "Pure iron mixed with ~0.05% carbon becomes:", opts: ["Stainless steel","Hard and strong steel","Bronze","Wrought iron"], ans: 1, exp: "Adding ~0.05% carbon to iron makes it hard and strong. More carbon gives cast iron; adding Ni+Cr gives stainless steel." },
+  { section: null, q: "24 carat gold is:", opts: ["Gold alloyed with 2 parts copper","Pure gold (very soft)","22 parts gold + 2 parts silver","Gold coated with platinum"], ans: 1, exp: "24 carat gold is 100% pure gold. It is very soft and not suitable for jewellery. 22 carat (22 Au + 2 Cu/Ag) is used in India." },
+  { section: null, q: "The ancient iron pillar near Qutub Minar in Delhi is remarkable because:", opts: ["It is made of stainless steel","It is the heaviest iron structure","It has not rusted for over 1600 years","It was built in the 20th century"], ans: 2, exp: "The 8-metre, 6-tonne iron pillar is over 1600 years old and has not rusted – testament to ancient Indian metallurgy. High phosphorus content gives it corrosion resistance." },
+  // ─── MIXED HIGHER ORDER ───
+  { section: "Mixed & Higher Order Questions", q: "Why is aluminium used to make cooking utensils despite being highly reactive?", opts: ["It is cheap","It forms a thin but tough Al₂O₃ layer that prevents further reaction","It conducts heat poorly","It is the most malleable metal"], ans: 1, exp: "Al forms a thin, adherent, hard Al₂O₃ passive layer when exposed to air. This oxide layer prevents further corrosion, making Al safe and practical for cooking." },
+  { section: null, q: "Why are platinum, gold, and silver used to make jewellery?", opts: ["They are cheap","They are highly reactive","They are lustrous, malleable, and do not corrode or tarnish","They are very hard"], ans: 2, exp: "Pt, Au, Ag are lustrous, malleable, and do NOT corrode or tarnish, making them ideal for jewellery that must retain beauty over time." },
+  { section: null, q: "Why are sodium, potassium, and lithium stored under oil?", opts: ["To keep them warm","To increase conductivity","They react vigorously with air/moisture and may catch fire","To prevent alloying"], ans: 2, exp: "Na, K, Li react violently with air/moisture. The heat produced can ignite the evolved hydrogen. Kerosene/oil prevents this contact." },
+  { section: null, q: "Tarnished copper vessels are cleaned with lemon/tamarind juice because:", opts: ["They are abrasive","They contain acids that dissolve the basic copper carbonate tarnish","They are alkaline","They contain only salt"], ans: 1, exp: "The green tarnish (basic copper carbonate) is a base. Lemon/tamarind acids (citric, tartaric) react with and dissolve it, restoring shine." },
+  { section: null, q: "Food cans are coated with tin (Sn) rather than zinc (Zn) because:", opts: ["Tin is cheaper","Tin is less reactive than zinc – safer with food acids","Zinc is unavailable","Tin conducts heat better"], ans: 1, exp: "Zinc is MORE reactive than tin. Zinc could react with food acids, contaminating the food. Tin is less reactive and therefore safer." },
+  { section: null, q: "A man dipped gold bangles in a solution that made them shine but reduced their weight. The solution was most likely:", opts: ["Dilute HCl","NaOH solution","Aqua regia","HNO₃ alone"], ans: 2, exp: "Aqua regia (conc. HCl : conc. HNO₃ = 3:1) dissolves gold. It dissolved some gold (reducing weight) while the remaining surface appeared brighter/cleaner." },
+  { section: null, q: "Why is copper preferred over steel for making hot water tanks?", opts: ["Copper is cheaper","Copper does not react with water; steel (iron alloy) would rust","Copper has lower melting point","Copper is lighter"], ans: 1, exp: "Copper does not react with water even at high temperatures and does not corrode. Steel would react with hot water, rusting and contaminating it." },
+  { section: null, q: "Which pair will give a displacement reaction?", opts: ["NaCl + Cu","MgCl₂ + Al","FeSO₄ + Ag","AgNO₃ + Cu"], ans: 3, exp: "Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag. Copper is more reactive than silver and displaces it. The other options involve less reactive metals trying to displace more reactive ones." },
+  { section: null, q: "An element reacts with oxygen to give a compound with a high melting point, soluble in water forming an alkali. The element is:", opts: ["Carbon","Silicon","Calcium","Iron"], ans: 2, exp: "Calcium: 2Ca + O₂ → 2CaO (high MP ionic compound). CaO + H₂O → Ca(OH)₂ (alkali). Carbon/silicon form acidic or network oxides; iron oxide is insoluble." },
+  { section: null, q: "The role of carbon (coke) in the reduction of ZnO is:", opts: ["Catalyst","Oxidising agent","Reducing agent","Electrolyte"], ans: 2, exp: "Carbon acts as a REDUCING agent: ZnO + C → Zn + CO. Carbon gets oxidised (C→CO) while zinc oxide is reduced (ZnO→Zn)." },
+  { section: null, q: "When sulphur burns and the gas dissolves in water, the solution:", opts: ["Turns blue litmus red (acidic)","Turns red litmus blue (basic)","Shows no colour change","Turns yellow"], ans: 0, exp: "Sulphur burns to form SO₂. SO₂ + H₂O → H₂SO₃ (sulphurous acid). The acidic solution turns blue litmus red." },
+  { section: null, q: "When magnesium burns and its ash is dissolved in water, the solution is:", opts: ["Acidic","Basic","Neutral","Amphoteric"], ans: 1, exp: "Mg burns to form MgO. MgO + H₂O → Mg(OH)₂ (basic solution). Metal oxides generally form basic solutions." },
+  { section: null, q: "Which of the following is NOT an amphoteric oxide?", opts: ["Al₂O₃","ZnO","Na₂O","None – all are amphoteric"], ans: 2, exp: "Na₂O is purely basic (Na₂O + H₂O → 2NaOH). Al₂O₃ and ZnO are amphoteric – they react with both acids and bases." },
+  { section: null, q: "The extraction of metals from their ores and refining them is called:", opts: ["Anodising","Galvanisation","Metallurgy","Corrosion"], ans: 2, exp: "Metallurgy is the branch of chemistry dealing with the extraction of metals from their ores and refining them for practical use." },
+  { section: null, q: "Which statement about non-metals is CORRECT?", opts: ["Non-metals are malleable","Non-metals are good conductors of heat","Non-metals form negatively charged ions by gaining electrons","Non-metals are always solids"], ans: 2, exp: "Non-metals form anions (negative ions) by GAINING electrons when reacting with metals. They are neither malleable nor good conductors (except graphite)." },
+  { section: null, q: "The reactivity series is most useful for predicting:", opts: ["The colour of metals","Whether a displacement reaction will occur","The melting point of alloys","The lustre of metals"], ans: 1, exp: "The reactivity series allows us to predict whether displacement reactions will occur – a more reactive metal displaces a less reactive one from its salt solution." },
+  { section: null, q: "Which correctly describes roasting?", opts: ["Heating carbonate ore in limited air","Heating sulphide ore strongly in excess air","Electrolysis of molten ore","Displacement by a reactive metal"], ans: 1, exp: "Roasting = heating sulphide ore strongly in excess air to convert it to a metal oxide. E.g., 2ZnS + 3O₂ → 2ZnO + 2SO₂ (heat)." },
+];
+
+// ─── STATE ───
+let quizMode = false;
+let answered = {};
+let score = 0;
+
+// ─── THEME ───
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  // Save preference
+  try { localStorage.setItem('mcq-theme', isDark ? 'light' : 'dark'); } catch(e) {}
+}
+// Load saved theme
+(function() {
+  try {
+    const saved = localStorage.getItem('mcq-theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+      document.getElementById('themeBtn').textContent = saved === 'light' ? '🌙 Dark' : '☀️ Light';
+    }
+  } catch(e) {}
+})();
+
+// ─── BUILD ───
+function buildQuiz() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '<div id="resultsBanner" class="results-banner"></div>';
+  let currentSection = null;
+
+  questions.forEach((q, i) => {
+    if (q.section && q.section !== currentSection) {
+      currentSection = q.section;
+      const label = document.createElement('div');
+      label.className = 'section-label';
+      label.textContent = `📌 ${q.section}`;
+      container.appendChild(label);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = `card-${i}`;
+
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-num">Q${i+1}</span>
+        <span class="q-text">${q.q}</span>
+      </div>
+      <div class="options" id="opts-${i}"></div>
+      <div class="explanation" id="exp-${i}">
+        <strong>✅ ${String.fromCharCode(65+q.ans)}. ${q.opts[q.ans]}</strong>
+        ${q.exp}
+      </div>`;
+    container.appendChild(card);
+
+    const optsDiv = card.querySelector(`#opts-${i}`);
+    q.opts.forEach((o, j) => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.textContent = `${String.fromCharCode(65+j)}. ${o}`;
+      btn.onclick = () => handleAnswer(i, j, btn, card);
+      optsDiv.appendChild(btn);
+    });
+  });
+
+  updateScore();
+  updateProgress();
+}
+
+// ─── ANSWER HANDLER ───
+function handleAnswer(qi, optIdx, btn, card) {
+  if (!quizMode) return;
+  if (answered[qi] !== undefined) return;
+
+  answered[qi] = optIdx;
+  const q = questions[qi];
+  const allOpts = card.querySelectorAll('.option');
+  allOpts.forEach(b => { b.disabled = true; b.style.cursor = 'default'; });
+
+  if (optIdx === q.ans) {
+    btn.classList.add('correct');
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    allOpts[q.ans].classList.add('reveal-correct');
+  }
+
+  document.getElementById(`exp-${qi}`).classList.add('visible');
+  updateScore();
+  updateProgress();
+
+  // Auto-show results when all answered
+  const total = Object.keys(answered).length;
+  if (total === questions.length) showResults();
+}
+
+// ─── SCORE ───
+function updateScore() {
+  const total = Object.keys(answered).length;
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('totalNum').textContent = total;
+}
+
+function updateProgress() {
+  const total = Object.keys(answered).length;
+  const pct = (total / questions.length) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+// ─── RESULTS ───
+function showResults() {
+  const banner = document.getElementById('resultsBanner');
+  const pct = Math.round((score / questions.length) * 100);
+  let grade = '', msg = '';
+  if (pct >= 90)      { grade = '🏆 Excellent!'; msg = 'Outstanding performance! You\'re exam-ready.'; }
+  else if (pct >= 75) { grade = '🎯 Good Job!'; msg = 'Solid work. Review the questions you missed.'; }
+  else if (pct >= 60) { grade = '📚 Keep Going'; msg = 'Average score. Revisit the weaker sections.'; }
+  else                { grade = '💪 Keep Practising'; msg = 'More revision needed. Focus on explanations.'; }
+
+  banner.innerHTML = `
+    <h2>${grade}</h2>
+    <div class="grade">${score} / ${questions.length}</div>
+    <p>${pct}% correct &nbsp;·&nbsp; ${msg}</p>`;
+  banner.classList.add('visible');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ─── CONTROLS ───
+function startQuiz() {
+  quizMode = true;
+  answered = {};
+  score = 0;
+  buildQuiz();
+  const btn = document.getElementById('startBtn');
+  btn.textContent = '✔ Quiz Active';
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function revealAll() {
+  quizMode = false;
+  document.getElementById('startBtn').textContent = '▶ Start Quiz';
+  document.getElementById('startBtn').classList.remove('active');
+
+  questions.forEach((q, i) => {
+    const card = document.getElementById(`card-${i}`);
+    if (!card) return;
+    const allOpts = card.querySelectorAll('.option');
+    allOpts.forEach(b => { b.disabled = true; b.style.cursor = 'default'; });
+    allOpts[q.ans].classList.add('reveal-correct');
+    document.getElementById(`exp-${i}`).classList.add('visible');
+  });
+  updateProgress();
+}
+
+function resetQuiz() {
+  quizMode = false;
+  answered = {};
+  score = 0;
+  const btn = document.getElementById('startBtn');
+  btn.textContent = '▶ Start Quiz';
+  btn.classList.remove('active');
+  buildQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── BACK TO TOP ───
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backTop');
+  if (window.scrollY > 400) btn.classList.add('show');
+  else btn.classList.remove('show');
+}, { passive: true });
+
+// ─── INIT ───
+buildQuiz();
+</script>
+</body>
+</html>
