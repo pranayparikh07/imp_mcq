@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metals & Non-Metals – 50 Advanced MCQs</title>
+<style>
+:root[data-theme="dark"] {
+  --bg:#0f172a; --bg2:#1e293b; --border:#334155; --border-hover:#475569;
+  --text:#e2e8f0; --text-muted:#94a3b8; --text-dim:#64748b;
+  --accent:#7c3aed; --accent-hover:#6d28d9; --accent-light:#a78bfa; --accent-bg:#2e1065;
+  --card-bg:#1e293b; --opt-bg:#0f172a; --opt-text:#cbd5e1;
+  --header-grad:linear-gradient(135deg,#2e1065 0%,#0f172a 100%);
+  --correct-bg:#064e3b; --correct-text:#6ee7b7; --correct-bd:#10b981;
+  --wrong-bg:#450a0a; --wrong-text:#fca5a5; --wrong-bd:#ef4444;
+  --exp-bg:#1a0a3a; --exp-text:#c4b5fd; --shadow:0 4px 24px rgba(0,0,0,0.4);
+  --tag-bg:#312e81; --tag-text:#a5b4fc;
+}
+:root[data-theme="light"] {
+  --bg:#f5f3ff; --bg2:#ffffff; --border:#ddd6fe; --border-hover:#a78bfa;
+  --text:#1e1b4b; --text-muted:#4c1d95; --text-dim:#7c3aed;
+  --accent:#7c3aed; --accent-hover:#6d28d9; --accent-light:#6d28d9; --accent-bg:#ede9fe;
+  --card-bg:#ffffff; --opt-bg:#faf5ff; --opt-text:#3b0764;
+  --header-grad:linear-gradient(135deg,#ede9fe 0%,#f5f3ff 100%);
+  --correct-bg:#d1fae5; --correct-text:#065f46; --correct-bd:#10b981;
+  --wrong-bg:#fee2e2; --wrong-text:#991b1b; --wrong-bd:#ef4444;
+  --exp-bg:#ede9fe; --exp-text:#4c1d95; --shadow:0 4px 24px rgba(0,0,0,0.07);
+  --tag-bg:#ede9fe; --tag-text:#4c1d95;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s;line-height:1.6}
+
+header{background:var(--header-grad);padding:clamp(20px,5vw,40px) clamp(16px,5vw,40px) clamp(16px,4vw,28px);text-align:center;border-bottom:2px solid var(--accent);position:relative}
+header h1{font-size:clamp(1.4rem,4vw,2.1rem);color:var(--accent-light);font-weight:800;letter-spacing:-.5px}
+header p{color:var(--text-muted);margin-top:6px;font-size:clamp(.78rem,2.4vw,.93rem)}
+.theme-toggle{position:absolute;top:50%;right:clamp(12px,4vw,24px);transform:translateY(-50%);background:var(--accent-bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px;cursor:pointer;font-size:.83rem;font-weight:600;color:var(--accent-light);transition:all .2s;white-space:nowrap}
+.theme-toggle:hover{border-color:var(--accent)}
+
+.controls-wrap{position:sticky;top:0;z-index:100;background:var(--bg2);border-bottom:1px solid var(--border);box-shadow:var(--shadow);transition:background .3s}
+.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;padding:14px clamp(12px,4vw,24px);max-width:1100px;margin:0 auto}
+.progress-wrap{height:4px;background:var(--border)}
+.progress-bar{height:4px;background:linear-gradient(90deg,var(--accent),#ec4899);width:0%;transition:width .4s ease}
+
+.btn{padding:9px 18px;border:none;border-radius:8px;font-size:clamp(.76rem,2.1vw,.87rem);font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn-start{background:var(--accent);color:#fff}
+.btn-start:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-start.active{background:#0d9488}
+.btn-reveal{background:#059669;color:#fff}
+.btn-reveal:hover{background:#047857;transform:translateY(-1px)}
+.btn-reset{background:#dc2626;color:#fff}
+.btn-reset:hover{background:#b91c1c;transform:translateY(-1px)}
+.score-pill{padding:8px 16px;background:var(--accent-bg);border:1.5px solid var(--accent);border-radius:50px;color:var(--accent-light);font-weight:700;font-size:clamp(.78rem,2.1vw,.9rem);display:flex;align-items:center;gap:6px}
+.score-pill span{opacity:.7;font-weight:400}
+
+.quiz-container{max-width:960px;margin:0 auto;padding:0 clamp(10px,4vw,24px) 60px}
+
+.section-label{background:var(--accent-bg);color:var(--accent-light);font-weight:700;font-size:clamp(.7rem,1.9vw,.8rem);text-transform:uppercase;letter-spacing:1.2px;padding:10px 16px;margin:28px 0 0;border-radius:8px 8px 0 0;border-left:4px solid var(--accent);display:flex;align-items:center;gap:8px}
+
+.question-card{background:var(--card-bg);border:1.5px solid var(--border);border-radius:0 10px 10px 10px;padding:clamp(14px,3vw,22px);margin:0 0 12px;box-shadow:var(--shadow);transition:border-color .2s,background .3s}
+.question-card:hover{border-color:var(--border-hover)}
+
+/* difficulty tag */
+.q-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.q-num{background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.q-tag{background:var(--tag-bg);color:var(--tag-text);font-size:.68rem;font-weight:600;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.q-text{font-size:clamp(.87rem,2.3vw,.96rem);line-height:1.65;color:var(--text);font-weight:500}
+
+/* statement block for assertion-reason style */
+.stmt-block{background:var(--opt-bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;margin:8px 0 12px;font-size:clamp(.8rem,2.1vw,.88rem);color:var(--text-muted);line-height:1.7}
+.stmt-block b{color:var(--accent-light)}
+
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:560px){.options{grid-template-columns:1fr}}
+.option{padding:clamp(9px,2.4vw,12px) clamp(10px,2.8vw,15px);border-radius:8px;border:1.5px solid var(--border);background:var(--opt-bg);cursor:pointer;font-size:clamp(.8rem,2.1vw,.89rem);color:var(--opt-text);transition:all .15s;text-align:left;font-family:inherit;line-height:1.45}
+.option:hover:not(:disabled){border-color:var(--accent);color:var(--text);background:var(--accent-bg);transform:translateY(-1px)}
+.option.correct{border-color:var(--correct-bd)!important;background:var(--correct-bg)!important;color:var(--correct-text)!important;font-weight:600}
+.option.wrong{border-color:var(--wrong-bd)!important;background:var(--wrong-bg)!important;color:var(--wrong-text)!important}
+.option.reveal-correct{border-color:var(--correct-bd)!important;background:var(--correct-bg)!important;color:var(--correct-text)!important;font-weight:600}
+
+.explanation{margin-top:12px;padding:clamp(10px,2.4vw,14px) clamp(12px,2.8vw,16px);background:var(--exp-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-size:clamp(.78rem,2.1vw,.86rem);color:var(--exp-text);line-height:1.65;display:none;animation:fadeIn .25s ease}
+.explanation.visible{display:block}
+.explanation strong{color:var(--accent-light);display:block;margin-bottom:4px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+
+.results-banner{display:none;background:var(--accent-bg);border:2px solid var(--accent);border-radius:12px;padding:24px;margin:24px 0 0;text-align:center}
+.results-banner.visible{display:block;animation:fadeIn .3s ease}
+.results-banner h2{color:var(--accent-light);font-size:1.5rem;margin-bottom:8px}
+.results-banner p{color:var(--text-muted);font-size:.95rem}
+.grade{font-size:2.4rem;font-weight:800;color:var(--accent-light);margin:8px 0}
+
+.back-top{position:fixed;bottom:24px;right:24px;background:var(--accent);color:#fff;border:none;border-radius:50%;width:44px;height:44px;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 16px rgba(124,58,237,.4);transition:all .2s;opacity:0;pointer-events:none;display:flex;align-items:center;justify-content:center}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{transform:translateY(-3px);background:var(--accent-hover)}
+
+footer{text-align:center;padding:20px;color:var(--text-dim);font-size:.78rem;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔬 Metals &amp; Non-Metals</h1>
+  <p>50 Advanced &amp; Unique MCQs &nbsp;·&nbsp; Tricky, Applied &amp; Assertion-Reason</p>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️ Light</button>
+</header>
+
+<div class="controls-wrap">
+  <div class="controls">
+    <button class="btn btn-start"  id="startBtn"  onclick="startQuiz()">▶ Start Quiz</button>
+    <button class="btn btn-reveal" id="revealBtn" onclick="revealAll()">👁 Show Answers</button>
+    <button class="btn btn-reset"  id="resetBtn"  onclick="resetQuiz()">↺ Reset</button>
+    <div class="score-pill">🎯 Score: <span id="scoreNum">0</span> / <span id="totalNum">0</span></div>
+    <a href="index.html" style="text-decoration: none;"><button class="btn btn-start">Previous →</button></a>
+  </div>
+  <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+</div>
+
+<div class="quiz-container" id="quizContainer">
+  <div id="resultsBanner" class="results-banner"></div>
+</div>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer>Chapter 3 – Metals and Non-Metals &nbsp;|&nbsp; NCERT Class 10 Science &nbsp;|&nbsp; Advanced Set</footer>
+
+<script>
+// tag: "M"=Medium, "H"=Hard, "A"=Assertion-Reason, "E"=Equation-based, "App"=Application
+// stmt: optional statement block HTML shown above options
+const questions = [
+
+  // ─── EQUATION COMPLETION & REACTION PREDICTION ───
+  { section:"Equation-Based & Reaction Prediction", tag:"E",
+    q:"Complete: 4Al + 3O₂ → ?",
+    opts:["Al₂O₃","2Al₂O₃","4AlO","Al₃O₄"], ans:1,
+    exp:"4Al + 3O₂ → 2Al₂O₃. Aluminium oxide is the product. Balance: 4 Al atoms and 6 O atoms on each side." },
+
+  { section:null, tag:"E",
+    q:"When zinc reacts with dilute H₂SO₄, the products are:",
+    opts:["ZnSO₄ + O₂","ZnO + H₂S","ZnSO₄ + H₂↑","Zn(OH)₂ + SO₂"], ans:2,
+    exp:"Zn + H₂SO₄ → ZnSO₄ + H₂↑. This is a standard metal-acid reaction: salt + hydrogen gas." },
+
+  { section:null, tag:"E",
+    q:"Iron reacts with steam. Which oxide of iron is formed?",
+    opts:["FeO","Fe₂O₃","Fe₃O₄","Fe(OH)₂"], ans:2,
+    exp:"3Fe + 4H₂O(steam) → Fe₃O₄ + 4H₂. The product is iron(II,III) oxide or magnetite (Fe₃O₄), not the rust form Fe₂O₃." },
+
+  { section:null, tag:"E",
+    q:"Which equation correctly represents the reaction of potassium with water?",
+    opts:["K + H₂O → KOH + H₂","2K + 2H₂O → 2KOH + H₂↑ + heat","K + 2H₂O → K(OH)₂ + H₂","2K + H₂O → K₂O + H₂"], ans:1,
+    exp:"2K(s) + 2H₂O(l) → 2KOH(aq) + H₂(g) + heat energy. This reaction is so vigorous that the H₂ immediately catches fire." },
+
+  { section:null, tag:"E",
+    q:"What is the product of roasting zinc sulphide (ZnS)?",
+    opts:["ZnO + SO₂","ZnS₂ + O₂","Zn + SO₃","ZnSO₄"], ans:0,
+    exp:"2ZnS + 3O₂ → 2ZnO + 2SO₂ (roasting in excess air). The sulphide ore is converted to metal oxide, releasing SO₂." },
+
+  { section:null, tag:"E",
+    q:"Al₂O₃ + 6HCl → ? The products are:",
+    opts:["AlCl + H₂O","2AlCl₃ + 3H₂O","Al₂Cl₆ + 3H₂","AlCl₃ + H₂"], ans:1,
+    exp:"Al₂O₃ + 6HCl → 2AlCl₃ + 3H₂O. Al₂O₃ acts as a BASE here, reacting with HCl (acid) – showing its amphoteric nature." },
+
+  { section:null, tag:"E",
+    q:"In the thermite reaction, which substance is OXIDISED?",
+    opts:["Fe₂O₃","Al","Fe","Al₂O₃"], ans:1,
+    exp:"Fe₂O₃ + 2Al → 2Fe + Al₂O₃. Aluminium is oxidised (Al → Al³⁺ in Al₂O₃, loses electrons). Iron is reduced (Fe³⁺ → Fe⁰)." },
+
+  { section:null, tag:"E",
+    q:"Calcination of ZnCO₃ gives:",
+    opts:["Zn + CO₂ + O","ZnO + CO₂","ZnO₂ + C","Zn + CO₃"], ans:1,
+    exp:"ZnCO₃ → ZnO + CO₂ (calcination – heating in limited air). Carbonate decomposes to metal oxide and CO₂." },
+
+  // ─── ASSERTION–REASON ───
+  { section:"Assertion–Reason Questions", tag:"A",
+    stmt:"<b>Assertion (A):</b> Sodium is stored in kerosene oil.<br><b>Reason (R):</b> Sodium reacts vigorously with oxygen and water vapour in air.",
+    q:"Choose the correct option:",
+    opts:["Both A and R are true; R is the correct explanation of A",
+          "Both A and R are true; R is NOT the correct explanation of A",
+          "A is true but R is false",
+          "A is false but R is true"], ans:0,
+    exp:"Both statements are true and R correctly explains A. Na is so reactive with air/moisture that storing it in kerosene prevents any contact." },
+
+  { section:null, tag:"A",
+    stmt:"<b>Assertion (A):</b> Aluminium is used to make cooking utensils.<br><b>Reason (R):</b> Aluminium is the least reactive metal.",
+    q:"Choose the correct option:",
+    opts:["Both A and R are true; R is the correct explanation of A",
+          "A is true but R is false",
+          "Both A and R are false",
+          "A is false but R is true"], ans:1,
+    exp:"A is true – Al is used for cooking utensils. R is false – Al is actually quite reactive; it's used because a protective Al₂O₃ layer prevents further corrosion." },
+
+  { section:null, tag:"A",
+    stmt:"<b>Assertion (A):</b> Ionic compounds have high melting points.<br><b>Reason (R):</b> Large amounts of energy are required to overcome the strong electrostatic forces between oppositely charged ions.",
+    q:"Choose the correct option:",
+    opts:["Both A and R are true; R is the correct explanation of A",
+          "Both A and R are true; R is NOT the correct explanation of A",
+          "A is true but R is false",
+          "A is false but R is true"], ans:0,
+    exp:"Both A and R are true, and R correctly explains why ionic compounds have high melting points – the strong ionic lattice requires large energy input to break." },
+
+  { section:null, tag:"A",
+    stmt:"<b>Assertion (A):</b> Copper does not react with dilute HCl.<br><b>Reason (R):</b> Copper is above hydrogen in the reactivity series.",
+    q:"Choose the correct option:",
+    opts:["Both A and R are true; R is the correct explanation of A",
+          "A is true but R is false",
+          "Both A and R are false",
+          "A is false but R is true"], ans:1,
+    exp:"A is true – Cu does not react with dilute HCl. R is false – Cu is BELOW hydrogen in the reactivity series, which is why it can't displace H₂ from acids." },
+
+  { section:null, tag:"A",
+    stmt:"<b>Assertion (A):</b> The electrolytic conductivity of alloys is lower than pure metals.<br><b>Reason (R):</b> Alloys have higher melting points than pure metals.",
+    q:"Choose the correct option:",
+    opts:["Both A and R are true; R is the correct explanation of A",
+          "A is true but R is false",
+          "Both A and R are false",
+          "A is false but R is true"], ans:1,
+    exp:"A is true – alloys conduct electricity less than pure metals (irregular lattice scatters electrons). R is false – alloys actually have LOWER melting points than pure metals." },
+
+  { section:null, tag:"A",
+    stmt:"<b>Assertion (A):</b> Iron rusts faster in coastal (salty) regions than in dry areas.<br><b>Reason (R):</b> Salt water is a better electrolyte and accelerates the electrochemical corrosion process.",
+    q:"Choose the correct option:",
+    opts:["Both A and R are true; R is the correct explanation of A",
+          "Both A and R are true; R is NOT the correct explanation of A",
+          "A is true but R is false",
+          "A is false but R is true"], ans:0,
+    exp:"Both are true. Salt water conducts electricity better, speeding up the electrochemical corrosion (rusting) of iron in coastal environments." },
+
+  { section:null, tag:"A",
+    stmt:"<b>Assertion (A):</b> Gold and platinum are used to make jewellery.<br><b>Reason (R):</b> Gold and platinum are very hard metals.",
+    q:"Choose the correct option:",
+    opts:["Both A and R are true; R is the correct explanation of A",
+          "A is true but R is false",
+          "Both A and R are false",
+          "A is false but R is true"], ans:1,
+    exp:"A is true – they are used for jewellery. R is false – they are NOT chosen for hardness; they are chosen for lustre, malleability, and corrosion resistance. Gold is actually quite soft." },
+
+  // ─── TRICKY CONCEPT ───
+  { section:"Tricky Conceptual Questions", tag:"H",
+    q:"A metal M displaces hydrogen from dilute HCl. Where is M located in the reactivity series relative to hydrogen?",
+    opts:["Below hydrogen","At the same position as hydrogen","Above hydrogen","Position cannot be determined"], ans:2,
+    exp:"Only metals ABOVE hydrogen in the reactivity series can displace H₂ from dilute acids. If M displaces H₂, M must be above hydrogen." },
+
+  { section:null, tag:"H",
+    q:"Why does calcium react less violently with water than sodium, even though both are highly reactive?",
+    opts:["Calcium is a non-metal","Calcium is below sodium in the reactivity series","Calcium forms an insoluble Ca(OH)₂ layer that slows further reaction","Calcium doesn't produce hydrogen"], ans:2,
+    exp:"Calcium forms slightly insoluble Ca(OH)₂ which coats the metal surface and slows the reaction rate. Sodium forms the highly soluble NaOH, allowing the reaction to continue vigorously." },
+
+  { section:null, tag:"H",
+    q:"If zinc is placed in a mixture of FeSO₄ and CuSO₄ solutions, which metal will deposit first?",
+    opts:["Iron, because it is more reactive","Copper, because it is less reactive (bigger activity gap with Zn)","Both deposit simultaneously","Neither deposits"], ans:1,
+    exp:"Zinc displaces BOTH Fe and Cu since Zn > Fe > Cu in reactivity. However, Cu deposits preferentially first because the difference in reactivity (driving force) between Zn and Cu is greater." },
+
+  { section:null, tag:"H",
+    q:"A metal X forms an oxide XO₂ which is acidic. X is most likely a:",
+    opts:["Metal from the top of the activity series","Metal from the middle of the activity series","Non-metal","Alkali metal"], ans:2,
+    exp:"Non-metals typically form acidic oxides. Metal oxides are generally basic or amphoteric. An acidic oxide like XO₂ (e.g., CO₂, SO₂, NO₂) indicates a non-metal." },
+
+  { section:null, tag:"H",
+    q:"Which of the following correctly explains why graphite is used as an electrode?",
+    opts:["It is a metal","It is the only non-metal that conducts electricity","It is malleable","It has metallic lustre"], ans:1,
+    exp:"Graphite is unique among non-metals: it conducts electricity due to its layered structure where one electron per carbon is free to move. This makes it suitable as an electrode." },
+
+  { section:null, tag:"H",
+    q:"Mercury is a metal but is liquid at room temperature. Which physical property of metals does this VIOLATE?",
+    opts:["Lustre","Malleability","Being solid at room temperature","Ductility"], ans:2,
+    exp:"All metals EXCEPT mercury exist as solids at room temperature. Mercury being a liquid at room temperature is a notable exception to this general property of metals." },
+
+  { section:null, tag:"H",
+    q:"In Activity 3.14 (rusting of iron nails), why did the nail in boiled distilled water + oil NOT rust?",
+    opts:["Boiled water is too hot","Boiling removes dissolved air (oxygen), and the oil layer prevents re-dissolution of air","Distilled water cannot react with iron","Oil reacts with iron to prevent rusting"], ans:1,
+    exp:"Boiling removes dissolved oxygen from water, and the oil layer on top prevents air from re-dissolving. Without oxygen, rusting cannot occur, confirming that BOTH O₂ and water are needed." },
+
+  { section:null, tag:"M",
+    q:"Two metals A and B are placed in each other's salt solutions. A displaces B but B cannot displace A. What can be concluded?",
+    opts:["A and B have equal reactivity","B is more reactive than A","A is more reactive than B","No conclusion can be drawn"], ans:2,
+    exp:"Displacement reactions show relative reactivity. Since A displaces B, A is more reactive than B. Since B cannot displace A, this confirms A > B in the reactivity series." },
+
+  { section:null, tag:"H",
+    q:"Why is the melting point of an alloy generally LOWER than that of its constituent pure metals?",
+    opts:["Alloys are non-metals","The irregular atomic arrangement in alloys disrupts the metallic lattice, requiring less energy to overcome","Alloys have higher density","Alloys are better conductors"], ans:1,
+    exp:"In a pure metal, atoms are uniform in size forming a regular lattice. In alloys, atoms of different sizes disrupt the regular lattice, weakening the metallic bonds and lowering the melting point." },
+
+  { section:null, tag:"H",
+    q:"Iron does not burn on direct heating BUT iron filings sprinkle into a flame and burn vigorously. Why?",
+    opts:["Iron filings are purer","Iron filings have a much larger surface area exposed to oxygen","Iron filings are at higher temperature","Iron filings contain carbon"], ans:1,
+    exp:"Rate of chemical reaction depends on surface area. Iron filings have an enormously larger surface area per gram compared to a solid iron rod, so they react much faster with oxygen in the flame." },
+
+  // ─── MATCH & IDENTIFY ───
+  { section:"Match & Identify Questions", tag:"M",
+    q:"Match the alloy with its composition: Solder – Bronze – Brass – Stainless Steel",
+    opts:["Pb+Sn, Cu+Sn, Cu+Zn, Fe+Ni+Cr",
+          "Cu+Zn, Pb+Sn, Cu+Sn, Fe+C",
+          "Cu+Sn, Cu+Zn, Pb+Sn, Fe+Ni+Cr",
+          "Fe+Ni+Cr, Cu+Sn, Cu+Zn, Pb+Sn"], ans:0,
+    exp:"Solder = Pb+Sn (low melting, electrical welding) | Bronze = Cu+Sn (ancient alloy) | Brass = Cu+Zn (musical instruments) | Stainless Steel = Fe+Ni+Cr (rust resistant)." },
+
+  { section:null, tag:"M",
+    q:"Match ore to metal: Cinnabar → Haematite → Bauxite → Galena",
+    opts:["Mercury, Iron, Aluminium, Lead",
+          "Iron, Mercury, Lead, Aluminium",
+          "Aluminium, Iron, Mercury, Lead",
+          "Mercury, Lead, Aluminium, Iron"], ans:0,
+    exp:"Cinnabar (HgS)→Mercury | Haematite (Fe₂O₃)→Iron | Bauxite (Al₂O₃·xH₂O)→Aluminium | Galena (PbS)→Lead. These are standard ore-metal pairs from metallurgy." },
+
+  { section:null, tag:"M",
+    q:"Which set correctly lists metals in DECREASING order of reactivity?",
+    opts:["Na > K > Ca > Mg","K > Na > Ca > Mg > Al > Zn > Fe","Fe > Zn > Al > Na > K","Ca > Na > K > Mg"], ans:1,
+    exp:"The correct decreasing reactivity order is: K > Na > Ca > Mg > Al > Zn > Fe > Pb > [H] > Cu > Hg > Ag > Au. This is the standard activity series." },
+
+  { section:null, tag:"M",
+    q:"Identify the WRONG statement about non-metals:",
+    opts:["Non-metals are generally poor conductors of heat and electricity",
+          "Non-metals form acidic or neutral oxides",
+          "All non-metals are gases at room temperature",
+          "Non-metals form anions by gaining electrons"], ans:2,
+    exp:"Non-metals can be solids (sulphur, phosphorus, iodine, carbon), liquids (bromine), or gases (oxygen, nitrogen, chlorine) at room temperature. NOT all are gases – this statement is wrong." },
+
+  { section:null, tag:"M",
+    q:"Which of these is NOT a method of preventing corrosion?",
+    opts:["Galvanisation","Anodising","Calcination","Chrome plating"], ans:2,
+    exp:"Calcination is a metallurgical process of heating ores – it has nothing to do with corrosion prevention. Galvanisation, anodising, chrome plating, painting, and oiling all prevent corrosion." },
+
+  // ─── APPLIED & SCENARIO ───
+  { section:"Applied & Scenario-Based Questions", tag:"App",
+    q:"A student adds excess zinc to copper sulphate solution. After some time, the blue colour disappears and a reddish deposit forms. The student then filters the mixture. What is the reddish solid on the filter paper?",
+    opts:["Zinc sulphate","Copper metal","Zinc oxide","Copper oxide"], ans:1,
+    exp:"Zn + CuSO₄ → ZnSO₄ + Cu↓. Zinc (more reactive) displaces copper from copper sulphate. The reddish deposit is copper metal. The blue colour of CuSO₄ disappears as it is consumed." },
+
+  { section:null, tag:"App",
+    q:"A lab technician needs to extract a very reactive metal (like calcium) from its ore. Which method should be used?",
+    opts:["Heat the ore with carbon","Heat the ore alone","Electrolysis of molten ore","Displace with a more reactive metal"], ans:2,
+    exp:"Highly reactive metals (top of activity series) cannot be reduced by carbon – they have more affinity for oxygen than carbon. Electrolysis of their molten chlorides/oxides is the only practical method." },
+
+  { section:null, tag:"App",
+    q:"Priya notices that her silver jewellery has turned black. What chemical is responsible?",
+    opts:["Silver oxide (Ag₂O)","Silver sulphide (Ag₂S)","Silver chloride (AgCl)","Silver carbonate (Ag₂CO₃)"], ans:1,
+    exp:"Silver reacts with sulphur compounds (H₂S) in the air to form silver sulphide (Ag₂S), which is black. This is the tarnishing of silver jewellery." },
+
+  { section:null, tag:"App",
+    q:"A student is refining an impure copper sample. Which arrangement is correct for electrolytic refining?",
+    opts:["Pure Cu as anode, impure Cu as cathode, CuSO₄ as electrolyte",
+          "Impure Cu as anode, pure Cu as cathode, CuSO₄ as electrolyte",
+          "Impure Cu as cathode, pure Cu as anode, HCl as electrolyte",
+          "Both electrodes are impure Cu, CuSO₄ as electrolyte"], ans:1,
+    exp:"In electrolytic refining: IMPURE metal = anode (dissolves), PURE metal = cathode (receives pure deposits), metal salt solution = electrolyte. Impurities settle as anode mud." },
+
+  { section:null, tag:"App",
+    q:"Rahul wants to join two cracked railway tracks urgently in a remote location without electricity. Which process should he use?",
+    opts:["Electrolytic reduction","Calcination","Thermite reaction","Galvanisation"], ans:2,
+    exp:"The thermite reaction (Fe₂O₃ + 2Al → 2Fe + Al₂O₃ + heat) produces molten iron at ~2500°C without any external power. The molten iron fills the crack and welds the tracks together." },
+
+  { section:null, q:"A wire of metal X glows in a bulb circuit. Metal X is also beaten into very thin foil used for food packaging. X is:",
+    opts:["Iron","Copper","Aluminium","Lead"], tag:"App", ans:2,
+    exp:"Aluminium: conducts electricity (used in circuits/wiring), is highly malleable (beaten into thin foil for food packaging/silver paper). It is both ductile and malleable." },
+
+  { section:null, tag:"App",
+    q:"You are given three unknown metals P, Q, R. P reacts with cold water, Q reacts only with steam, R does not react with water at all. Arrange them in DECREASING order of reactivity:",
+    opts:["R > Q > P","Q > P > R","P > Q > R","P > R > Q"], ans:2,
+    exp:"Reactivity with water: P reacts with cold water (very reactive, e.g. Na/K), Q reacts only with steam (moderately reactive, e.g. Fe/Al/Zn), R doesn't react (least reactive, e.g. Cu/Ag). So P > Q > R." },
+
+  { section:null, tag:"App",
+    q:"A metal M forms a black oxide when heated in air and does NOT react with dilute H₂SO₄. M is most likely:",
+    opts:["Magnesium","Zinc","Copper","Sodium"], ans:2,
+    exp:"Copper forms a black copper(II) oxide (CuO) when heated. Copper is below hydrogen in the activity series and does NOT react with dilute H₂SO₄. The black oxide is CuO." },
+
+  // ─── ELECTROCHEMISTRY / IONIC ───
+  { section:"Electrochemistry & Ionic Compound Concepts", tag:"H",
+    q:"In the electrolytic extraction of aluminium from aluminium oxide, what is deposited at the cathode?",
+    opts:["Oxygen","Aluminium metal","Aluminium oxide","Chlorine"], ans:1,
+    exp:"Al³⁺ + 3e⁻ → Al. Aluminium metal is deposited at the cathode. Oxygen is released at the anode: 2O²⁻ → O₂ + 4e⁻. This process requires very high energy." },
+
+  { section:null, tag:"H",
+    q:"Why can ionic compounds conduct electricity in aqueous solution but NOT in solid state?",
+    opts:["Water destroys ionic bonds","In solution, ions are free to move and carry charge; in solid, ions are fixed in rigid lattice positions","Ionic compounds become covalent in solution","Solid state has no ions"], ans:1,
+    exp:"Electrical conductivity requires mobile charge carriers. In solid state, ions are locked in a rigid crystal lattice. When dissolved or melted, ions become free to move, enabling conduction." },
+
+  { section:null, tag:"H",
+    q:"During anodising of aluminium with dilute H₂SO₄, what is liberated at the anode and reacts with Al?",
+    opts:["Hydrogen","Sulphur dioxide","Oxygen","Sulphuric acid vapour"], ans:2,
+    exp:"In anodising, the Al article (anode) is electrolysed in dilute H₂SO₄. Oxygen gas is evolved at the anode (2H₂O → O₂ + 4H⁺ + 4e⁻), and this O₂ reacts with Al to form a thick Al₂O₃ layer." },
+
+  { section:null, tag:"M",
+    q:"Which of the following pairs of compounds are both ionic?",
+    opts:["NaCl and CO₂","KBr and MgO","H₂O and NaCl","CH₄ and CaCl₂"], ans:1,
+    exp:"KBr (potassium bromide) and MgO (magnesium oxide) are both formed by transfer of electrons between metals and non-metals – they are ionic compounds." },
+
+  { section:null, tag:"H",
+    q:"When an ionic compound is dissolved in water, it conducts electricity. The current is carried by:",
+    opts:["Free electrons","Protons","Mobile ions in solution","Water molecules"], ans:2,
+    exp:"Unlike metals where electrons carry current, in ionic solutions the current is carried by IONS moving toward oppositely charged electrodes. Cations move to cathode, anions to anode." },
+
+  // ─── EXCEPTION & SPECIAL CASES ───
+  { section:"Exceptions & Special Cases", tag:"H",
+    q:"Which of the following is a non-metal but behaves like a metal in terms of electrical conductivity?",
+    opts:["Sulphur","Iodine","Graphite (carbon)","Phosphorus"], ans:2,
+    exp:"Graphite (an allotrope of carbon) is the only non-metal that conducts electricity. Its layered structure allows one delocalised electron per carbon atom to move freely, like in metals." },
+
+  { section:null, tag:"H",
+    q:"Carbon can exist as diamond, graphite, and fullerene. These different forms of the same element are called:",
+    opts:["Isotopes","Isobars","Allotropes","Isomers"], ans:2,
+    exp:"Allotropes are different structural forms of the same element. Carbon's allotropes include diamond (hardest natural substance), graphite (conductor), and fullerene (C₆₀ cage structure)." },
+
+  { section:null, tag:"H",
+    q:"Among the alkali metals, which TWO have such low density that they float on water?",
+    opts:["Sodium and potassium only","Lithium and sodium","Lithium, sodium, and potassium","Potassium and caesium"], ans:2,
+    exp:"Lithium (0.53 g/cm³), sodium (0.97 g/cm³), and potassium (0.86 g/cm³) all have densities less than water (1 g/cm³) and float on it. They also react vigorously with water." },
+
+  { section:null, tag:"H",
+    q:"Which statement about diamond is TRUE despite it being a non-metal?",
+    opts:["It is a good conductor of electricity","It is the hardest natural substance with a very high melting point","It is lustrous and flexible","It is used as an electrode"], ans:1,
+    exp:"Diamond is the hardest natural substance known and has an extremely high melting point (~3500°C). Despite being a non-metal (carbon allotrope), it possesses these exceptional properties due to its giant covalent structure." },
+
+  { section:null, tag:"H",
+    q:"Potassium (K) and sodium (Na) both react with water. However, potassium's reaction is MORE violent because:",
+    opts:["Potassium is heavier","Potassium is ABOVE sodium in the reactivity series and hence more reactive","Potassium reacts with nitrogen in air","Potassium forms a different product"], ans:1,
+    exp:"In the reactivity series, K is above Na, meaning K is MORE reactive. The reaction of K with water releases so much heat that the evolved H₂ catches fire immediately (unlike Na which just fizzes)." },
+
+  // ─── METALLURGY DEEP ───
+  { section:"Metallurgy – Deeper Concepts", tag:"H",
+    q:"What is the purpose of the 'enrichment of ores' step in metallurgy?",
+    opts:["To increase the metal's reactivity","To remove gangue (impurities) from the ore before extraction","To dissolve the ore in acid","To convert the metal to its sulphide form"], ans:1,
+    exp:"Ores mined from earth contain large amounts of impurities (gangue – soil, sand, rock). Enrichment/concentration removes these impurities using physical/chemical differences between ore and gangue." },
+
+  { section:null, tag:"H",
+    q:"In electrolytic refining, which impurities go into the SOLUTION?",
+    opts:["Insoluble impurities","Soluble impurities (less reactive metals dissolve as ions)","All impurities","The pure metal itself"], ans:1,
+    exp:"Soluble impurities (metals more reactive than the one being refined) dissolve into the electrolyte solution. Insoluble impurities (precious metals like Ag, Au in copper refining) settle as anode mud." },
+
+  { section:null, tag:"H",
+    q:"Why is it easier to extract a metal from its OXIDE ore than from its sulphide or carbonate ore?",
+    opts:["Oxide ores are more abundant","Oxides can be directly reduced, while sulphides/carbonates must first be converted to oxides","Oxide ores are purer","Oxide ores have lower melting points"], ans:1,
+    exp:"Metal oxides are the most suitable form for reduction by carbon or displacement. Sulphide and carbonate ores must first be converted to their oxides (by roasting/calcination) before reduction – adding extra steps." },
+
+  { section:null, tag:"M",
+    q:"Which technique is used to separate gangue from an ore when the ore is magnetic?",
+    opts:["Froth flotation","Hydraulic washing","Electromagnetic separation","Leaching"], ans:2,
+    exp:"Electromagnetic separation is used when the ore or gangue is magnetic. For example, magnetite (Fe₃O₄, magnetic) can be separated from non-magnetic gangue using a magnetic belt/drum." },
+
+  { section:null, tag:"H",
+    q:"Anode mud in the electrolytic refining of copper often contains:",
+    opts:["Pure copper","Zinc and nickel","Precious metals like gold and silver","Iron and manganese"], ans:2,
+    exp:"Anode mud contains the insoluble impurities from the anode. In copper refining, this includes precious metals like gold and silver (which are less reactive than copper and don't dissolve), making anode mud economically valuable." },
+
+  { section:null, tag:"H",
+    q:"A student claims: 'All metals can be extracted using carbon reduction because carbon is a strong reducing agent.' This claim is:",
+    opts:["Completely correct","Partially correct – works only for metals in the middle of the activity series","Incorrect – works only for highly reactive metals","Incorrect – carbon reduction works for no metals"], ans:1,
+    exp:"Partially correct. Carbon reduction works for metals of MEDIUM reactivity (Zn, Fe, Pb, Cu etc.) whose oxides can be reduced by carbon. Highly reactive metals (Na, K, Al, Mg) have more affinity for oxygen than carbon, making electrolysis necessary." },
+];
+
+let quizMode = false, answered = {}, score = 0;
+
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  try { localStorage.setItem('mcq-theme-adv', isDark ? 'light' : 'dark'); } catch(e) {}
+}
+(function() {
+  try {
+    const s = localStorage.getItem('mcq-theme-adv');
+    if (s) { document.documentElement.setAttribute('data-theme', s); document.getElementById('themeBtn').textContent = s === 'light' ? '🌙 Dark' : '☀️ Light'; }
+  } catch(e) {}
+})();
+
+function tagColor(t) {
+  if (t === 'H') return 'background:#7f1d1d;color:#fca5a5';
+  if (t === 'A') return 'background:#1e3a5f;color:#93c5fd';
+  if (t === 'E') return 'background:#064e3b;color:#6ee7b7';
+  if (t === 'App') return 'background:#3b0764;color:#e9d5ff';
+  return 'background:var(--tag-bg);color:var(--tag-text)';
+}
+function tagLabel(t) {
+  if (t === 'H') return '🔴 Hard';
+  if (t === 'A') return '🔵 Assertion-Reason';
+  if (t === 'E') return '🟢 Equation';
+  if (t === 'App') return '🟣 Application';
+  return '🟡 Medium';
+}
+
+function buildQuiz() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '<div id="resultsBanner" class="results-banner"></div>';
+  let currentSection = null;
+
+  questions.forEach((q, i) => {
+    if (q.section && q.section !== currentSection) {
+      currentSection = q.section;
+      const label = document.createElement('div');
+      label.className = 'section-label';
+      label.textContent = `📌 ${q.section}`;
+      container.appendChild(label);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = `card-${i}`;
+
+    let stmtHtml = q.stmt ? `<div class="stmt-block">${q.stmt}</div>` : '';
+
+    card.innerHTML = `
+      <div class="q-meta">
+        <span class="q-num">Q${i+1}</span>
+        <span class="q-tag" style="${tagColor(q.tag)}">${tagLabel(q.tag)}</span>
+      </div>
+      <div class="q-text">${q.q}</div>
+      ${stmtHtml}
+      <div class="options" id="opts-${i}"></div>
+      <div class="explanation" id="exp-${i}">
+        <strong>✅ ${String.fromCharCode(65+q.ans)}. ${q.opts[q.ans]}</strong>
+        ${q.exp}
+      </div>`;
+    container.appendChild(card);
+
+    const optsDiv = card.querySelector(`#opts-${i}`);
+    // assertion-reason uses single column
+    if (q.tag === 'A') optsDiv.style.gridTemplateColumns = '1fr';
+    q.opts.forEach((o, j) => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.textContent = `${String.fromCharCode(65+j)}. ${o}`;
+      btn.onclick = () => handleAnswer(i, j, btn, card);
+      optsDiv.appendChild(btn);
+    });
+  });
+
+  updateScore(); updateProgress();
+}
+
+function handleAnswer(qi, optIdx, btn, card) {
+  if (!quizMode) return;
+  if (answered[qi] !== undefined) return;
+  answered[qi] = optIdx;
+  const q = questions[qi];
+  const allOpts = card.querySelectorAll('.option');
+  allOpts.forEach(b => { b.disabled = true; b.style.cursor = 'default'; });
+  if (optIdx === q.ans) { btn.classList.add('correct'); score++; }
+  else { btn.classList.add('wrong'); allOpts[q.ans].classList.add('reveal-correct'); }
+  document.getElementById(`exp-${qi}`).classList.add('visible');
+  updateScore(); updateProgress();
+  if (Object.keys(answered).length === questions.length) showResults();
+}
+
+function updateScore() {
+  const t = Object.keys(answered).length;
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('totalNum').textContent = t;
+}
+function updateProgress() {
+  const pct = (Object.keys(answered).length / questions.length) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+function showResults() {
+  const banner = document.getElementById('resultsBanner');
+  const pct = Math.round((score / questions.length) * 100);
+  let g = '', m = '';
+  if (pct >= 90)      { g = '🏆 Outstanding!'; m = 'You nailed the advanced set. Exam-ready.'; }
+  else if (pct >= 75) { g = '🎯 Well Done!'; m = 'Strong performance. Review your missed answers.'; }
+  else if (pct >= 60) { g = '📚 Decent Effort'; m = 'Focus more on Assertion-Reason and Hard questions.'; }
+  else                { g = '💪 Keep Pushing'; m = 'Re-read explanations carefully and try again.'; }
+  banner.innerHTML = `<h2>${g}</h2><div class="grade">${score} / ${questions.length}</div><p>${pct}% · ${m}</p>`;
+  banner.classList.add('visible');
+  banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function startQuiz() {
+  quizMode = true; answered = {}; score = 0; buildQuiz();
+  const b = document.getElementById('startBtn');
+  b.textContent = '✔ Quiz Active'; b.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function revealAll() {
+  quizMode = false;
+  document.getElementById('startBtn').textContent = '▶ Start Quiz';
+  document.getElementById('startBtn').classList.remove('active');
+  questions.forEach((q, i) => {
+    const card = document.getElementById(`card-${i}`); if (!card) return;
+    const allOpts = card.querySelectorAll('.option');
+    allOpts.forEach(b => { b.disabled = true; b.style.cursor = 'default'; });
+    allOpts[q.ans].classList.add('reveal-correct');
+    document.getElementById(`exp-${i}`).classList.add('visible');
+  });
+  updateProgress();
+}
+function resetQuiz() {
+  quizMode = false; answered = {}; score = 0;
+  document.getElementById('startBtn').textContent = '▶ Start Quiz';
+  document.getElementById('startBtn').classList.remove('active');
+  buildQuiz(); window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', () => {
+  const b = document.getElementById('backTop');
+  window.scrollY > 400 ? b.classList.add('show') : b.classList.remove('show');
+}, { passive: true });
+
+buildQuiz();
+</script>
+</body>
+</html>
